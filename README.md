@@ -13,9 +13,9 @@ Due to lecture still being created we will update list along the way...
 
 - 01_events_and_probability.md
 
-## In progress:
-
 - 02_combinatorics.md
+
+## In progress:
 
 - 03_probability_distributions.md
 
