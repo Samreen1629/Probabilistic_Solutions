@@ -18,12 +18,11 @@ $$
 \Omega = \{HH, HT, TH, TT\}
 $$
 
-Representation:
-  H   T
-  
-H HH HT
+Graphical representation:
 
-T TH TT
+       H    T
+    H  HH   HT
+    T  TH   TT
 
 Each cell corresponds to one elementary outcome.
 
@@ -32,7 +31,6 @@ Each cell corresponds to one elementary outcome.
 ### Part A — Marking events
 
 We translate each verbal statement into a **set of outcomes**.
-
 
 ---
 
@@ -48,7 +46,9 @@ $$
 A = \{HT, TH\}
 $$
 
-  
+        H   T
+    H   .   X
+    T   X   .
 ---
 
 #### 2. Both tosses are the same
@@ -59,7 +59,9 @@ $$
 B = \{HH, TT\}
 $$
 
-  
+        H   T
+    H   X   .
+    T   .   X
 ---
 
 #### 3. At least one head
@@ -70,6 +72,9 @@ $$
 C = \{HH, HT, TH\}
 $$
 
+        H   T
+    H   X   X
+    T   X   .
   
 ---
 
@@ -81,6 +86,9 @@ $$
 D = \{TH, TT\}
 $$
 
+        H   T
+    H   .   .
+    T   X   X
   
 ---
 
@@ -92,7 +100,9 @@ $$
 E = \{HH, TH\}
 $$
 
-  
+        H   T
+    H   X   .
+    T   X   . 
 ---
 
 ### Part B — Interpretation
@@ -100,7 +110,11 @@ $$
 ---
 
 #### Case 1
-  
+
+        H   T
+    H   X   X
+    T   .   . 
+    
 All marked outcomes lie in the first row.
 
 This means:
@@ -110,7 +124,11 @@ This means:
 ---
 
 #### Case 2
-  
+
+        H   T
+    H   .   X
+    T   X   .  
+    
 This corresponds to:
 
 $$
