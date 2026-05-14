@@ -1,234 +1,528 @@
-## Task 1 — Discrete Distribution Given by a PMF Table
+# Task 1 — Discrete Distribution Given by a PMF Table
 
-### Setup
+We are given a discrete random variable \(X\) together with its probability mass function (PMF).
 
-The PMF is given by:
+The PMF is specified by the table:
 
-| $x$ | $-2$ | $0$ | $1$ | $3$ | $5$ |
+| \(x\) | \(-2\) | \(0\) | \(1\) | \(3\) | \(5\) |
 |---|---|---|---|---|---|
-| $P(X=x)$ | $0.10$ | $0.25$ | $0.30$ | $0.20$ | $0.15$ |
+| \(P(X=x)\) | \(0.10\) | \(0.25\) | \(0.30\) | \(0.20\) | \(0.15\) |
+
+The PMF directly tells us how probability is distributed among the possible values of the random variable.
 
 ---
 
-### Step 1 — Constructing a Probability Space $\Omega$
+# 1. Constructing a Probability Space
 
-We need a finite sample space $\Omega$ and a random variable $X:\Omega\to\mathbb{R}$ that produces the given PMF.
-
-The simplest construction: let $\Omega$ consist of five elementary outcomes, one for each value in the support:
-
-$$\Omega = \{\omega_1, \omega_2, \omega_3, \omega_4, \omega_5\}$$
-
-Define the probability of each outcome to match the desired PMF:
-
-$$P(\{\omega_1\}) = 0.10,\quad P(\{\omega_2\}) = 0.25,\quad P(\{\omega_3\}) = 0.30,\quad P(\{\omega_4\}) = 0.20,\quad P(\{\omega_5\}) = 0.15$$
-
-Define the random variable:
-
-$$X(\omega_1) = -2,\quad X(\omega_2) = 0,\quad X(\omega_3) = 1,\quad X(\omega_4) = 3,\quad X(\omega_5) = 5$$
-
-Then by construction $P(X = x) = P(\{\omega : X(\omega) = x\})$ recovers the table exactly.
+We now construct one possible finite probability space \(\Omega\) together with a random variable \(X\) whose PMF is exactly the one given in the table.
 
 ---
 
-### Step 2 — Validity Check
+## Step 1 — Define the sample space
 
-A PMF is valid if and only if:
-1. All probabilities are non-negative.
-2. They sum to 1.
+One possible choice is:
 
-**Check non-negativity:** $0.10, 0.25, 0.30, 0.20, 0.15$ — all positive. ✓
+$$
+\Omega=\{\omega_1,\omega_2,\omega_3,\omega_4,\omega_5\}
+$$
 
-**Check normalization:**
-
-$$0.10 + 0.25 + 0.30 + 0.20 + 0.15 = 1.00 \checkmark$$
-
-The distribution is valid.
+Each elementary outcome will correspond to one value of the random variable.
 
 ---
 
-### Step 3 — Graph of the PMF
+## Step 2 — Assign probabilities
 
-The PMF is a set of isolated vertical spikes ("lollipops") at each support point.
+We define:
 
-### PMF — Probability Mass Function
-P(X=x)
-
-    0.35 |
-    0.30 |              █
-    0.25 |         █    █
-    0.20 |         █    █         █
-    0.15 |    █    █    █         █         █
-    0.10 | █  █    █    █         █         █
-    0.05 | █  █    █    █         █         █
-    0.00 +--+------+----+---------+---------+----→ x
-           -2      0    1         3         5
-
-  Each █ column is a spike of height P(X = x).
-  There is zero probability between the support points.
-
----
-
-### Step 4 — Constructing the CDF
-
-The CDF is defined as $F(x) = P(X \leq x)$. It is a right-continuous step function that jumps at each support point by the corresponding PMF value.
-
-**For $x < -2$:**
-
-$$F(x) = 0$$
-
-**For $-2 \leq x < 0$:**
-
-$$F(x) = P(X = -2) = 0.10$$
-
-**For $0 \leq x < 1$:**
-
-$$F(x) = 0.10 + 0.25 = 0.35$$
-
-**For $1 \leq x < 3$:**
-
-$$F(x) = 0.35 + 0.30 = 0.65$$
-
-**For $3 \leq x < 5$:**
-
-$$F(x) = 0.65 + 0.20 = 0.85$$
-
-**For $x \geq 5$:**
-
-$$F(x) = 0.85 + 0.15 = 1.00$$
-
-**Summary table:**
-
-| Interval | $F(x)$ |
+| Outcome | Probability |
 |---|---|
-| $x < -2$ | $0$ |
-| $-2 \leq x < 0$ | $0.10$ |
-| $0 \leq x < 1$ | $0.35$ |
-| $1 \leq x < 3$ | $0.65$ |
-| $3 \leq x < 5$ | $0.85$ |
-| $x \geq 5$ | $1.00$ |
+| \(\omega_1\) | \(0.10\) |
+| \(\omega_2\) | \(0.25\) |
+| \(\omega_3\) | \(0.30\) |
+| \(\omega_4\) | \(0.20\) |
+| \(\omega_5\) | \(0.15\) |
 
 ---
 
-### Step 5 — Graph of the CDF
+## Step 3 — Define the random variable
 
-The CDF is a right-continuous staircase function. Filled circles (•) mark the value the function takes at the jump point (right endpoint); open circles (○) show the value just before the jump.
+We define the mapping:
 
-### CDF — Cumulative Distribution Function
+| Outcome | \(X(\omega)\) |
+|---|---|
+| \(\omega_1\) | \(-2\) |
+| \(\omega_2\) | \(0\) |
+| \(\omega_3\) | \(1\) |
+| \(\omega_4\) | \(3\) |
+| \(\omega_5\) | \(5\) |
+
+This construction ensures:
+
+$$
+P(X=-2)=0.10
+$$
+
+$$
+P(X=0)=0.25
+$$
+
+$$
+P(X=1)=0.30
+$$
+
+$$
+P(X=3)=0.20
+$$
+
+$$
+P(X=5)=0.15
+$$
+
+Thus the random variable has exactly the required PMF.
+
+---
+
+# 2. Verifying That This Is a Valid Probability Distribution
+
+A valid probability distribution must satisfy two conditions:
+
+1. every probability must be between 0 and 1,
+2. the total probability must equal 1.
+
+---
+
+## Step 1 — Check nonnegativity
+
+All probabilities are nonnegative:
+
+$$
+0.10,\ 0.25,\ 0.30,\ 0.20,\ 0.15 \ge 0
+$$
+
+Thus the first condition is satisfied.
+
+---
+
+## Step 2 — Check normalization
+
+We compute:
+
+$$
+0.10+0.25+0.30+0.20+0.15
+$$
+
+$$
+=1.00
+$$
+
+Therefore:
+
+$$
+\sum_x P(X=x)=1
+$$
+
+The PMF is valid.
+
+---
+
+# 3. Graph of the Probability Mass Function
+
+The PMF assigns probability mass to isolated points.
+
+Graphically:
+
+```text
+Probability
+0.30 |                 ●
+0.25 |         ●
+0.20 |                           ●
+0.15 |                                       ●
+0.10 | ●
+0.05 |
+0.00 +------------------------------------------------
+        -2          0          1          3         5
+```
+
+Each point represents the probability:
+
+$$
+P(X=x)
+$$
+
+for the corresponding value of \(x\).
+
+Unlike continuous distributions, probability is concentrated at separate points.
+
+---
+
+# 4. Constructing the Cumulative Distribution Function
+
+The cumulative distribution function (CDF) is defined by:
+
+$$
+F(x)=P(X\le x)
+$$
+
+The CDF accumulates probability as we move from left to right along the real line.
+
+---
+
+## Step 1 — Compute cumulative probabilities
+
+---
+
+### For \(x<-2\)
+
+No values are included yet:
+
+$$
+F(x)=0
+$$
+
+---
+
+### For \(-2\le x<0\)
+
+Only the value \(-2\) is included:
+
+$$
+F(x)=0.10
+$$
+
+---
+
+### For \(0\le x<1\)
+
+We include \(-2\) and \(0\):
+
+$$
+F(x)=0.10+0.25=0.35
+$$
+
+---
+
+### For \(1\le x<3\)
+
+We include \(-2,0,1\):
+
+$$
+F(x)=0.10+0.25+0.30
+$$
+
+$$
+=0.65
+$$
+
+---
+
+### For \(3\le x<5\)
+
+We include \(-2,0,1,3\):
+
+$$
+F(x)=0.85
+$$
+
+---
+
+### For \(x\ge5\)
+
+All probability is included:
+
+$$
+F(x)=1
+$$
+
+---
+
+# 5. Table of the CDF
+
+| Interval | \(F(x)\) |
+|---|---|
+| \(x<-2\) | \(0\) |
+| \(-2\le x<0\) | \(0.10\) |
+| \(0\le x<1\) | \(0.35\) |
+| \(1\le x<3\) | \(0.65\) |
+| \(3\le x<5\) | \(0.85\) |
+| \(x\ge5\) | \(1.00\) |
+
+---
+
+# 6. Graph of the CDF
+
+The CDF is a step function.
+
+```text
 F(x)
 
-    1.00 |                                   ●────────
-    0.95 |
-    0.90 |
-    0.85 |                         ●────────○
-    0.80 |
-    0.75 |
-    0.70 |
-    0.65 |              ●─────────○
-    0.60 |
-    0.55 |
-    0.50 |
-    0.45 |
-    0.40 |
-    0.35 |         ●───○
-    0.30 |
-    0.25 |
-    0.20 |
-    0.15 |
-    0.10 | ●───────○
-    0.05 |
-    0.00 ○─────────────────────────────────────────→ x
-         -3   -2   -1    0    1    2    3    4    5    6
+1.00 |                                   ┌──────────
+0.85 |                           ┌───────┘
+0.65 |                   ┌───────┘
+0.35 |           ┌───────┘
+0.10 |   ┌───────┘
+0.00 |───┘
+      +------------------------------------------------
+         -2        0        1        3        5
+```
 
-  ● = value taken at the jump point (right-continuous)
-  ○ = left-hand limit just before the jump
+Important observations:
+
+- the function never decreases,
+- the function is right-continuous,
+- jumps occur at attainable values of the random variable.
 
 ---
 
-### Step 6 — Relationship Between CDF Jumps and PMF
+# 7. Relation Between PMF and CDF Jumps
 
-At every support point $a$, the CDF has a jump of size:
+For a discrete random variable:
 
-$$\Delta F(a) = F(a) - F(a^-) = P(X = a)$$
+$$
+F(x)=P(X\le x)
+$$
 
-where $F(a^-)$ denotes the left-hand limit. Between support points the CDF is flat — no probability mass lies there.
+Whenever the random variable takes a value \(a\), the CDF jumps upward by exactly:
 
-Concretely:
+$$
+P(X=a)
+$$
 
-| Point $a$ | $F(a^-)$ | $F(a)$ | Jump $= P(X=a)$ |
-|---|---|---|---|
-| $-2$ | $0$ | $0.10$ | $0.10$ |
-| $0$ | $0.10$ | $0.35$ | $0.25$ |
-| $1$ | $0.35$ | $0.65$ | $0.30$ |
-| $3$ | $0.65$ | $0.85$ | $0.20$ |
-| $5$ | $0.85$ | $1.00$ | $0.15$ |
+For example:
 
-**The CDF encodes the entire PMF in its jumps.** Wherever the CDF is flat, there is no probability mass.
+- jump at \(-2\) has size \(0.10\),
+- jump at \(0\) has size \(0.25\),
+- jump at \(1\) has size \(0.30\).
 
----
+Mathematically:
 
-### Step 7 — Computing Probabilities
+$$
+P(X=a)=F(a)-\lim_{x\to a^-}F(x)
+$$
 
-We use $a = 1$ and $b = 3$ as representative values.
+Thus:
 
-**$P(X = 1)$:** read directly from the PMF:
-
-$$P(X = 1) = 0.30$$
-
-Via CDF: $F(1) - F(1^-) = 0.65 - 0.35 = 0.30$. ✓
-
-**$P(X \leq 1)$:**
-
-$$P(X \leq 1) = F(1) = 0.65$$
-
-**$P(X < 1)$:**
-
-$$P(X < 1) = F(1^-) = F(1) - P(X=1) = 0.65 - 0.30 = 0.35$$
-
-Equivalently: sum of PMF values at $\{-2, 0\}$: $0.10 + 0.25 = 0.35$. ✓
-
-**$P(1 < X \leq 3)$:**
-
-$$P(1 < X \leq 3) = F(3) - F(1) = 0.85 - 0.65 = 0.20$$
-
-This picks up exactly the mass at $x = 3$.
-
-**$P(X \geq 1)$:**
-
-$$P(X \geq 1) = 1 - P(X < 1) = 1 - F(1^-) = 1 - 0.35 = 0.65$$
-
-Equivalently: $0.30 + 0.20 + 0.15 = 0.65$. ✓
-
-**$P(-2 \leq X \leq 3)$:**
-
-$$P(-2 \leq X \leq 3) = F(3) - F(-2^-) = 0.85 - 0 = 0.85$$
-
-Or directly: $0.10 + 0.25 + 0.30 + 0.20 = 0.85$. ✓
+- PMF describes individual probability masses,
+- CDF describes accumulated probability.
 
 ---
 
-### Step 8 — Comparison: PMF vs CDF
+# 8. Computing Probabilities from the PMF
 
-| Task | PMF approach | CDF approach |
-|---|---|---|
-| $P(X = a)$ | Read directly | $F(a) - F(a^-)$ |
-| $P(X \leq a)$ | Sum all $p(x)$ for $x \leq a$ | $F(a)$ directly |
-| $P(X < a)$ | Sum all $p(x)$ for $x < a$ | $F(a) - P(X=a)$ |
-| $P(a < X \leq b)$ | Sum $p(x)$ on $(a,b]$ | $F(b) - F(a)$ |
-| $P(X \geq a)$ | Sum all $p(x)$ for $x \geq a$ | $1 - F(a^-)$ |
+---
 
-The PMF is more natural for point probabilities and small sums; the CDF is more efficient for cumulative or interval probabilities.
-      
-        PMF spike        CDF jump         Cumulative total
-     ─────────────────────────────────────────────────────────────
-    P(X = -2) = 0.10  →  0.00 ──→ 0.10   (total so far: 0.10)
-    P(X =  0) = 0.25  →  0.10 ──→ 0.35   (total so far: 0.35)
-    P(X =  1) = 0.30  →  0.35 ──→ 0.65   (total so far: 0.65)
-    P(X =  3) = 0.20  →  0.65 ──→ 0.85   (total so far: 0.85)
-    P(X =  5) = 0.15  →  0.85 ──→ 1.00   (total so far: 1.00)
-     ─────────────────────────────────────────────────────────────
-         Sum = 1.00                             F(∞) = 1.00
+## Example 1 — \(P(X=1)\)
 
-> **Key insight:** The PMF shows *where* probability sits as isolated spikes.
-> The CDF shows *how much has accumulated* up to each point.
-> Every spike height in the PMF equals exactly the jump size in the CDF at that same point.
-> Between the support points {-2, 0, 1, 3, 5} the PMF is zero and the CDF is flat.
+Directly from the PMF:
+
+$$
+P(X=1)=0.30
+$$
+
+---
+
+## Example 2 — \(P(X\le1)\)
+
+We add all probabilities up to 1:
+
+$$
+P(X\le1)=0.10+0.25+0.30
+$$
+
+$$
+=0.65
+$$
+
+---
+
+## Example 3 — \(P(X<1)\)
+
+We include only values strictly smaller than 1:
+
+$$
+P(X<1)=0.10+0.25
+$$
+
+$$
+=0.35
+$$
+
+---
+
+## Example 4 — \(P(0<X\le3)\)
+
+Values satisfying this condition:
+
+$$
+1,\ 3
+$$
+
+Thus:
+
+$$
+P(0<X\le3)=0.30+0.20
+$$
+
+$$
+=0.50
+$$
+
+---
+
+## Example 5 — \(P(X\ge1)\)
+
+Included values:
+
+$$
+1,\ 3,\ 5
+$$
+
+Therefore:
+
+$$
+P(X\ge1)=0.30+0.20+0.15
+$$
+
+$$
+=0.65
+$$
+
+---
+
+# 9. Computing the Same Probabilities from the CDF
+
+The same probabilities can be obtained using cumulative values.
+
+---
+
+## Example — \(P(X\le1)\)
+
+From the CDF:
+
+$$
+F(1)=0.65
+$$
+
+---
+
+## Example — \(P(X<1)\)
+
+We use the value immediately before the jump at 1:
+
+$$
+P(X<1)=0.35
+$$
+
+---
+
+## Example — \(P(X=1)\)
+
+Using jumps:
+
+$$
+P(X=1)=F(1)-F(0)
+$$
+
+$$
+=0.65-0.35
+$$
+
+$$
+=0.30
+$$
+
+---
+
+## Example — \(P(0<X\le3)\)
+
+Using cumulative probabilities:
+
+$$
+P(0<X\le3)=F(3)-F(0)
+$$
+
+$$
+=0.85-0.35
+$$
+
+$$
+=0.50
+$$
+
+---
+
+# 10. Comparing PMF and CDF
+
+The PMF and CDF describe the same distribution, but from different perspectives.
+
+---
+
+## What is immediate from the PMF?
+
+The PMF directly shows:
+
+- probabilities of exact values,
+- where probability mass is concentrated,
+- which outcomes are most likely.
+
+For example:
+
+$$
+P(X=1)=0.30
+$$
+
+is read immediately from the PMF.
+
+---
+
+## What is immediate from the CDF?
+
+The CDF directly shows:
+
+- cumulative probabilities,
+- probabilities of intervals,
+- probabilities involving inequalities.
+
+For example:
+
+$$
+P(X\le3)=0.85
+$$
+
+is read immediately from the CDF.
+
+---
+
+# 11. Possible Interactive Application
+
+This distribution could be implemented in a small application.
+
+Possible features:
+
+- user enters PMF values,
+- automatic verification that probabilities sum to 1,
+- automatic construction of the CDF,
+- interactive PMF graph,
+- interactive CDF graph,
+- probability calculator for events such as:
+  
+  $$
+  P(X=a),\quad P(X\le a),\quad P(a<X\le b)
+  $$
+
+The program could dynamically show how cumulative probability is built from probability masses.
+
+---
+
+# Final Conceptual Observation
+
+This task illustrates one of the central ideas of probability theory:
+
+- the PMF describes how probability is distributed across individual outcomes,
+- the CDF describes how probability accumulates across the real line.
+
+For discrete random variables:
+
+- the PMF determines the CDF,
+- the CDF determines the PMF through its jumps.
+
+Understanding the relation between these two viewpoints is fundamental for the study of probability distributions.
