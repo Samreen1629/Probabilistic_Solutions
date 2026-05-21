@@ -1,26 +1,21 @@
 # Task 9 — Gamma Distribution
 
-# Introduction
+## Introduction
 
-The **gamma distribution** is a continuous probability distribution commonly used to model:
+The **gamma distribution** is a continuous probability distribution used mainly to model:
 
 - waiting times,
 - lifetimes of systems,
 - arrival times of events,
-- reliability problems.
+- reliability and queueing problems.
 
-It is a very important distribution in probability theory and statistics because it generalizes several other distributions, including the:
-
-- exponential distribution,
-- chi-square distribution.
-
-The gamma distribution is defined only for positive real values:
+It is defined only for positive values:
 
 $$
 x \ge 0
 $$
 
-making it suitable for modeling quantities such as time, distance, and duration.
+The gamma distribution generalizes the exponential distribution and is closely related to the chi-square distribution.
 
 ---
 
@@ -36,16 +31,12 @@ $$
 
 where:
 
-- $$\(\alpha > 0\)$$ is the **shape parameter**,
-- $$\(\beta > 0\)$$ is the **rate parameter**.
-
-Sometimes the scale parameter is used instead of the rate parameter.
+- $$\(\alpha>0\)$$ is the shape parameter,
+- $$\(\beta>0\)$$ is the rate parameter.
 
 ---
 
-# Probability Density Function (PDF)
-
-The PDF of the gamma distribution is:
+## Probability Density Function (PDF)
 
 $$
 f(x)=\frac{\beta^\alpha x^{\alpha-1}e^{-\beta x}}{\Gamma(\alpha)}
@@ -67,11 +58,9 @@ is the gamma function.
 
 ---
 
-# Gamma Function
+## Gamma Function
 
-The gamma function generalizes the factorial function.
-
-For positive integers:
+The gamma function generalizes factorials:
 
 $$
 \Gamma(n)=(n-1)!
@@ -80,7 +69,7 @@ $$
 Examples:
 
 $$
-\Gamma(1)=0!=1
+\Gamma(1)=1
 $$
 
 $$
@@ -89,29 +78,25 @@ $$
 
 ---
 
-# Cumulative Distribution Function (CDF)
-
-The CDF is:
+## Cumulative Distribution Function (CDF)
 
 $$
-F(x)=P(X \le x)
+F(x)=P(X\le x)
 $$
 
-It represents the probability that the random variable is less than or equal to \(x\).
-
-The gamma CDF usually requires numerical computation or software.
+The CDF gives cumulative probabilities and usually requires numerical computation.
 
 ---
 
 # 1. Description of the Experiment
 
-The gamma distribution models the waiting time until several random events occur.
+The gamma distribution models waiting time until several events occur.
 
-Example:
+Examples:
 
-- waiting time until 3 customers arrive,
-- waiting time until 5 machine failures occur,
-- total service time in a queue.
+- waiting time until 5 customers arrive,
+- total repair time of machines,
+- time until several phone calls are received.
 
 ---
 
@@ -153,25 +138,25 @@ $$
 X(\omega)=\omega
 $$
 
-The random variable directly represents the observed waiting time.
+The random variable directly represents the waiting time.
 
 ---
 
 # 5. Support of the Distribution
 
-The support of the gamma distribution is:
+The support is:
 
 $$
 [0,\infty)
 $$
 
-This means the random variable may take any nonnegative real value.
+Thus, the random variable may take any nonnegative real value.
 
 ---
 
 # 6. Shape of the Gamma Distribution
 
-The shape of the gamma distribution depends mainly on:
+The shape depends mainly on the parameter:
 
 $$
 \alpha
@@ -189,7 +174,7 @@ $$
 
 the gamma distribution becomes the exponential distribution.
 
-The density decreases rapidly from its maximum near:
+The graph decreases rapidly from its maximum near:
 
 $$
 x=0
@@ -205,7 +190,7 @@ $$
 \alpha=2
 $$
 
-the distribution becomes less skewed and develops a visible peak.
+the graph develops a visible peak and becomes less skewed.
 
 ---
 
@@ -217,77 +202,85 @@ $$
 \alpha=5
 $$
 
-the distribution becomes more symmetric and spread out.
+the graph becomes smoother and more symmetric.
 
 ---
 
-# 7. PDF Graphs
+# 7. Graph of the PDF
 
-The PDF changes significantly as the shape parameter changes.
+The PDF changes shape depending on the parameter:
+
+$$
+\alpha
+$$
+
+ASCII representation:
+
+```text
+Density
+
+α=1
+1.0 |\
+    | \
+    |  \
+    |   \
+0.0 +-----------------------------> x
+
+α=2
+1.0 |     /\
+    |    /  \
+    |   /    \
+    |__/      \____
+0.0 +-----------------------------> x
+
+α=5
+1.0 |          /\
+    |         /  \
+    |        /    \
+    |_______/      \_______
+0.0 +-----------------------------> x
+```
+
+Observations:
+
+- larger $$\(\alpha\)$$ shifts the peak to the right,
+- the distribution becomes less skewed,
+- the spread increases.
 
 ---
 
-## Example PDF Graphs
+# 8. Graph of the CDF
 
-### Case 1
-
-$$
-\alpha=1
-$$
-
-The graph decreases exponentially.
-
----
-
-### Case 2
-
-$$
-\alpha=2
-$$
-
-The graph has one peak and moderate skewness.
-
----
-
-### Case 3
-
-$$
-\alpha=5
-$$
-
-The graph becomes smoother and more symmetric.
-
----
-
-# 8. CDF Graphs
-
-The CDF of the gamma distribution:
+The CDF:
 
 - starts at 0,
 - increases continuously,
-- approaches 1 as \(x \to \infty\).
+- approaches 1 as $$\(x\to\infty\)$$.
 
----
+ASCII representation:
 
-## Example CDF Behavior
+```text
+CDF
 
-### Small \(\alpha\)
+1.0 |                            ________
+    |                        ___/
+    |                    ___/
+    |                ___/
+    |            ___/
+0.0 +___________/______________________> x
+```
 
-The CDF rises quickly near zero.
+Important observations:
 
----
-
-### Large \(\alpha\)
-
-The CDF increases more gradually because larger waiting times become more likely.
+- the function is increasing,
+- cumulative probability approaches 1,
+- larger $$\(\alpha\)$$ produces slower accumulation.
 
 ---
 
 # 9. Mean and Variance
 
 ## Mean
-
-The expected value is:
 
 $$
 E[X]=\frac{\alpha}{\beta}
@@ -297,8 +290,6 @@ $$
 
 ## Variance
 
-The variance is:
-
 $$
 \text{Var}(X)=\frac{\alpha}{\beta^2}
 $$
@@ -307,37 +298,31 @@ $$
 
 # 10. Computing Probabilities
 
-For continuous distributions, probabilities are computed using areas under the PDF curve.
+Probabilities correspond to areas under the PDF curve.
 
 ---
 
 ## Lower Tail Probability
 
 $$
-P(X \le a)=F(a)
+P(X\le a)=F(a)
 $$
-
-This gives the probability that the waiting time is at most \(a\).
 
 ---
 
 ## Upper Tail Probability
 
 $$
-P(X \ge a)=1-F(a)
+P(X\ge a)=1-F(a)
 $$
-
-This gives the probability that the waiting time exceeds \(a\).
 
 ---
 
 ## Interval Probability
 
 $$
-P(a \le X \le b)=F(b)-F(a)
+P(a\le X\le b)=F(b)-F(a)
 $$
-
-This gives the probability that the waiting time lies between \(a\) and \(b\).
 
 ---
 
@@ -346,19 +331,19 @@ This gives the probability that the waiting time lies between \(a\) and \(b\).
 Suppose:
 
 $$
-X \sim \text{Gamma}(2,1)
+X\sim\text{Gamma}(2,1)
 $$
 
 Find:
 
 $$
-P(X \le 3)
+P(X\le3)
 $$
 
-Using software or statistical tables:
+Using statistical software:
 
 $$
-P(X \le 3)\approx0.8009
+P(X\le3)\approx0.8009
 $$
 
 ---
@@ -369,7 +354,7 @@ $$
 
 ## Exponential Distribution
 
-The exponential distribution is a special case of the gamma distribution:
+The exponential distribution is a special case:
 
 $$
 \text{Gamma}(1,\beta)
@@ -382,54 +367,50 @@ $$
 The chi-square distribution is also a special case:
 
 $$
-\chi_n^2 \sim \text{Gamma}\left(\frac{n}{2},\frac{1}{2}\right)
+\chi_n^2\sim\text{Gamma}\left(\frac{n}{2},\frac12\right)
 $$
 
 ---
 
-# 12. Practical Applications
+# 12. Applications
 
-The gamma distribution has many practical applications.
+Applications include:
 
-Examples include:
-
-- waiting times in queueing systems,
 - reliability engineering,
+- queueing systems,
 - insurance mathematics,
-- rainfall modeling,
 - telecommunications,
-- medical survival analysis,
-- machine lifetime analysis.
+- machine lifetime analysis,
+- rainfall modeling,
+- survival analysis.
 
 ---
 
-# 13. Comparison with Other Distributions
+# 13. Comparing Gamma and Exponential Distributions
 
-| Distribution | Type | Measures |
-|---|---|---|
-| Exponential | Continuous | Waiting time for one event |
-| Gamma | Continuous | Waiting time for multiple events |
-| Normal | Continuous | Symmetric measurements |
-| Poisson | Discrete | Number of events |
+| Distribution | Measures |
+|---|---|
+| Exponential | Waiting time for one event |
+| Gamma | Waiting time for multiple events |
+
+The gamma distribution generalizes the exponential model.
 
 ---
 
-# Conclusion
+# Final Conceptual Observation
 
-The gamma distribution is a flexible continuous distribution used primarily for modeling waiting times and lifetimes.
+The gamma distribution is one of the most important continuous distributions for modeling waiting times.
 
-Its shape depends heavily on the parameter:
+Its flexibility comes from the shape parameter:
 
 $$
 \alpha
 $$
 
-while the rate parameter:
+which controls the shape and skewness of the distribution.
 
-$$
-\beta
-$$
+The gamma distribution connects several important probability models, including:
 
-controls the spread and scale of the distribution.
-
-The gamma distribution is closely related to the exponential and chi-square distributions and has many important real-world applications.
+- exponential distributions,
+- chi-square distributions,
+- queueing and reliability models.
